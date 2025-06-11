@@ -9,7 +9,7 @@ import requests
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 # Ganti dengan token milikmu
-TOKEN = "7991974572:AAGFf9StBaGSWgHq6JFGlbHLbriQRJfRcBA"
+TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = None  # Ini nanti diisi otomatis saat kamu kirim /start ke bot
 
 # Jadwal kegiatan harian default
