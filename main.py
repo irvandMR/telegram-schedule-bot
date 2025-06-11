@@ -97,6 +97,9 @@ dp.add_handler(CommandHandler("start", start))
 dp.add_handler(CommandHandler("stop", stop)) 
 dp.add_handler(CommandHandler("jadwal", jadwal))
 
+from keep_alive import keep_alive
+keep_alive()
+
 # Jalankan bot
 updater.start_polling()
 updater.idle()
