@@ -1,7 +1,6 @@
 services:
-  - type: worker
-    name: telegram-bot-schedule
+  - type: web
+    name: telegram-reminder-bot
     env: python
-    plan: free
-    buildCommand: ""
+    buildCommand: pip install -r requirements.txt
     startCommand: python main.py
