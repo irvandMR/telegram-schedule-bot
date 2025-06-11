@@ -4,11 +4,12 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime
 import logging
 import requests
+import os  # Tambahkan untuk ambil environment variable
 
 # Konfigurasi logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-# Ganti dengan token milikmu
+# Ganti dengan token dari environment variable
 TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = None  # Ini nanti diisi otomatis saat kamu kirim /start ke bot
 
@@ -81,21 +82,4 @@ def jadwal(update, context):
     pesan = "📅 Jadwal Harian Kamu:\n\n"
     semua_jadwal = jadwal_kegiatan + ambil_waktu_salat()
     semua_jadwal.sort()
-    for waktu, aktivitas in semua_jadwal:
-        pesan += f"{waktu} - {aktivitas}\n"
-    update.message.reply_text(pesan)
-
-# Inisialisasi bot dan scheduler
-updater = Updater(token=TOKEN, use_context=True)
-dp = updater.dispatcher
-scheduler = BackgroundScheduler()
-scheduler.start()
-
-# Tambahkan command handler
-dp.add_handler(CommandHandler("start", start))
-dp.add_handler(CommandHandler("stop", stop)) 
-dp.add_handler(CommandHandler("jadwal", jadwal))
-
-# Jalankan bot
-updater.start_polling()
-updater.idle()
+    for
