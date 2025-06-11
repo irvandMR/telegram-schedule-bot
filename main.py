@@ -82,4 +82,21 @@ def jadwal(update, context):
     pesan = "📅 Jadwal Harian Kamu:\n\n"
     semua_jadwal = jadwal_kegiatan + ambil_waktu_salat()
     semua_jadwal.sort()
-    for
+    for waktu, aktivitas in semua_jadwal:
+        pesan += f"{waktu} - {aktivitas}\n"
+    update.message.reply_text(pesan)
+
+# Inisialisasi bot dan scheduler
+updater = Updater(token=TOKEN, use_context=True)
+dp = updater.dispatcher
+scheduler = BackgroundScheduler()
+scheduler.start()
+
+# Tambahkan command handler
+dp.add_handler(CommandHandler("start", start))
+dp.add_handler(CommandHandler("stop", stop)) 
+dp.add_handler(CommandHandler("jadwal", jadwal))
+
+# Jalankan bot
+updater.start_polling()
+updater.idle()
